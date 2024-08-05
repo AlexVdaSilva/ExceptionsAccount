@@ -60,12 +60,12 @@ public class Account {
 		balance -= amount;
 	}
 	
-	public void validateWithdraw(double amount) {
-		if (getBalance() < amount) {
-			throw new WithdrawException("Withdraw error: Not enough balance");
-		}
+	private void validateWithdraw(double amount) {
 		if (getWithdrawLimit() < amount) {
 			throw new WithdrawException("Withdraw error: The amount exceeds withdraw limit");
+		}
+		if (getBalance() < amount) {
+			throw new WithdrawException("Withdraw error: Not enough balance");
 		}
 	}
 
